@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>game center</title>
+    <style>
+        body {
+                background: #333;
+        }
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+
+        .content{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .heading{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 30px;
+            color:white;
+        }
+        .content .workBx{
+            width: 50%;
+            padding: 20px;
+            position: relative;
+                width: 300px;
+                min-height: 200px;
+                background: #333;
+                border-radius: 30px;
+                padding: 50px;
+                box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+                10px 10px 70px rgba(0, 0, 0, 0.25),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+            color: white;
+        }
+        .content .workBx img{
+            max-width: 100%;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="heading">
+    <h2>Let's play!</h2>
+    <p>have some time killing little game and relax</p>
+</div>
+<div class="content">
+    <div class="workBx"onclick="window.location.href='snake'">
+        <img src="{% static 'image/product1.png' %}" width="200" height="150">
+        <p>a simple snake game as always</p>
+    </div>
+    <div class="workBx"onclick="window.location.href='ni'">
+        <img src="{% static 'image/product2.png' %}" width="200" height="150">
+        <p>hold left key of the mouse and have a stick to help you from cliffs</p> 
+    </div>
+    <div class="workBx"onclick="window.location.href='shot'">
+        <img src="{% static 'image/product3.png' %}" width="200" height="150">
+        <p>shoot the block and gain points</p>
+    </div>
+    <div class="workBx" onclick="window.location.href='fight'">
+        <img src="{% static 'image/product4.png' %}" width="200" height="150">
+        <p>1v1 multi-player fighting game ( get friends and play together !)</p> 
+    </div>
+    <div class="workBx" onclick="window.location.href='tower'">
+        <img src="{% static 'image/product5.png' %}" width="200" height="150">
+        <p>make your tower higher !</p> 
+    </div>
+    <div class="workBx" onclick="window.location.href='M_C_Game'">
+        <img src="{% static 'image/product6.png' %}" width="200" height="150">
+        <p>make your tower higher !</p> 
+    </div>
+    <div class="heading">
+        <a href="L" 
+        style="padding: 10px 10px;width: 40%;
+            text-align:center ;
+            background-color: lightskyblue;
+            color: white; 
+            text-decoration: none;
+            border-radius: 15px;
+                box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.25),
+                inset -3px -3px 5px rgba(0, 0, 0, 0.5);">back to menu</a>
+    </div>
+</div>
+
+  </body>
+</html>

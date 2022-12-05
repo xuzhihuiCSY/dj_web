@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            list
+        </title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins',sans-serif;
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #333;
+            }
+            .container{
+                position: relative;
+                width: 350px;
+                min-height: 500px;
+                background: #333;
+                border-radius: 30px;
+                padding: 50px;
+                box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+                10px 10px 70px rgba(0, 0, 0, 0.25),
+                inset 5px 5px 10px rgba(0, 0, 0, 0.5),
+                inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+                inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+            }
+            .container h3{
+                color:white;
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+            .container .list{
+                position: relative;
+                display: flex;
+                align-items: center;
+                margin: 20px 0;
+                cursor: pointer;
+            }
+            .container .list::before{
+                content: '';
+                position: absolute;
+                top:0;
+                left: 0;
+                width: 45px;
+                height: 45px;
+                background: lightskyblue;
+                border-radius: 22.5px;
+                box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.25),
+                inset 2px 2px 5px rgba(255, 255, 255, 0.25),
+                inset -3px -3px 5px rgba(0, 0, 0, 0.5);
+                transition: 0.5s;
+            }
+            .container .list:hover::before{
+                width: 100%;
+            }
+            .container .list .rank{
+                position: relative;
+                min-width: 45px;
+                height: 45px;
+                /* background: white; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            .container .list .rank::before{
+                content: '';
+                position: absolute;
+                /* top: 6px; */
+                width: 30px;
+                height: 30px;
+                background: #333;
+                border-radius: 30px;
+                transform: scale(0);
+                transition: 0.5s;
+            }
+
+            .container .list:hover .rank::before{
+                transform: scale(1);
+            }
+
+            .container .list .rank span{
+                position: relative;
+                font-weight: 600;
+                font-size: 1em;
+                color: aliceblue;
+                transition: 0.5s;
+            }
+            .container .list .creator{
+                position: relative;
+                line-height: 1.15em;
+            }
+            .container .list .creator h4{
+                font-weight: 600;
+                color:lightgray;
+                transition: 0.5s;
+            }
+            .container .list .creator p{
+                font-weight: 400;
+                color:grey;
+                font-size: 0.85em;
+                transition:0.5s;
+            }
+
+            .container .list:hover .creator h4,
+            .container .list:hover .creator p{
+                color:#fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            {% if user.is_authenticated %}
+            <h3>Welcome {{user.username}}</h3>
+            {% else %}
+            <h3>Welcome to my page</h3>
+            {% endif %}
+            <div class="list">
+                <div class="rank"><span>1</span></div>
+                <div class="creator"onclick="window.location.href='tasks'">
+                    <h4>To-Do-List</h4>
+                    <p>your personal To-Do-List</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>2</span></div>
+                <div class="creator"onclick="window.location.href='game'">
+                    <h4>Game</h4>
+                    <p>get in and play games</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>3</span></div>
+                <div class="creator"onclick="window.location.href='home'">
+                    <h4>Chat</h4>
+                    <p>get chat room and chat</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>4</span></div>
+                <div class="creator"onclick="window.location.href='music'">
+                    <h4>Music</h4>
+                    <p>List of music to enjoy</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>5</span></div>
+                <div class="creator"onclick="window.location.href='weather'">
+                    <h4>weather</h4>
+                    <p>look for weather of cities</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>6</span></div>
+                <div class="creator"onclick="window.location.href='watch'">
+                    <h4>Movies and animes</h4>
+                    <p>go watch Movies and animes</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>7</span></div>
+                <div class="creator"onclick="window.location.href='portfolio'">
+                    <h4>Portfolio</h4>
+                    <p>My personal Portfolio</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>8</span></div>
+                <div class="creator"onclick="window.location.href='upload'">
+                    <h4>Upload (PC Only)</h4>
+                    <p>Upload some files</p>
+                </div>
+            </div>
+            <div class="list">
+                <div class="rank"><span>9</span></div>
+                <div class="creator"onclick="window.location.href='flip'">
+                    <h4>lucky coin</h4>
+                    <p>let luck decide for you</p>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <p style="color:lightblue; text-align:right;" onclick="window.location.href='index'"> logout</p>
+            {% else %}
+            <p style="color:white; text-align: right;" onclick="window.location.href='index'">login</p>
+            {% endif %}
+        </div>
+    </body>
+</html>

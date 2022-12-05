@@ -1,0 +1,234 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content="width = device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        .banner{
+    position: relative;
+    min-height:100vh;
+    background: url("{% static 'image/banner.jpg' %}");
+    background-size: cover;
+    background-position: right;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    </style>
+    <link rel="stylesheet" href="{% static 'Pstyle.css' %}">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Portfolio</a>
+        <ul>
+            <li><a href="L">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Skills</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#testimonial">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+    <section class="banner" id="home">
+        <div class="textBx"> 
+            <h2>Hello, I'm <br><span>Xu Zhihui</span></h2>
+            <h3>I'm a CS Student</h3>
+            <a href="#about" class="btn">About Me</a> <br>
+            <a href="{% static 'resume.pdf' %}" class="btn" download="Xu's resume.pdf">Download My resume</a>
+        </div>
+    </section>
+    <audio controls autoplay>
+        <source src="{% static 'music/River_flows_in_you.mp3' %}" type="audio/mpeg">
+    </audio>
+    <section class="about" id="about">
+        <div class="heading">
+            <h2>About Me</h2>
+        </div>
+        <div class="content">
+            <div class="contentBx w50">
+                <h3>I'm a CS student &Web Developer</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus eum sint reprehenderit iure nobis eius quaerat dolore, velit nulla itaque blanditiis quo veritatis maxime, accusantium aperiam, ratione dolor pariatur ipsum.
+                <br><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores quae exercitationem quis odio nostrum, eligendi quibusdam delectus at minus accusantium dolores quisquam molestias voluptates esse vitae nulla soluta? Architecto, corrupti.</p>
+            </div>
+            <div class="w50">
+                <img src="{% static 'image/img1.jpg' %}" class="img">
+            </div>
+        </div>
+    </section>
+    <section class="services" id="services">
+        <div class="heading white">
+            <h2>Skills</h2>
+            <p>I firmly believe that in the days to come, my ability will get increasing</p>
+        </div>
+        <div class="content">
+            <div class="servicesBx">
+                <img src="{% static 'image/icon1.png' %}">
+                <h2>CS Skills</h2>
+                <p>I am familiar with the basic application of java, c++, python and other languages. I am also happy to keep developing them</p>
+            </div>
+            <div class="servicesBx">
+                <img src="{% static 'image/icon2.png' %}">
+                <h2>Web Development</h2>
+                <p>From the front end to the back end of the website I have some experiments and learning</p>
+            </div>
+            <div class="servicesBx">
+                <img src="{% static 'image/icon3.png' %}">
+                <h2>Android App</h2>
+                <p>Android software development has always fascinated me. I also enjoy the process of developing and learning</p>
+            </div>
+            <div class="servicesBx">
+                <img src="{% static 'image/icon4.png' %}">
+                <h2>Photograpgy</h2>
+                <p>This is an extension of my personal interests, and I have also systematically learned some of its basics in school</p>
+            </div>
+            <div class="servicesBx">
+                <img src="{% static 'image/icon5.png' %}">
+                <h2>Content Writing</h2>
+                <p>English writing used to be my weakness but now I have overcome it with practice and study</p>
+            </div>
+            <div class="servicesBx">
+                <img src="{% static 'image/icon6.png' %}">
+                <h2>Video Editing</h2>
+                <p>This is an extension of my personal interests, and I have also systematically learned some of its basics in school</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="work" id="work">
+        <div class="heading">
+            <h2>Our Latest Work</h2>
+            <p>Just some small web features, I hope I can enhance my skills through them</p>
+        </div>
+        <div class="content">
+            <div class="workBx"onclick="window.location.href='snake'">
+                <img src="{% static 'image/product1.png' %}" width="200" height="150">
+            </div>
+            <div class="workBx"onclick="window.location.href='ni'">
+                <img src="{% static 'image/product2.png' %}" width="200" height="150">
+            </div>
+            <div class="workBx"onclick="window.location.href='shot'">
+                <img src="{% static 'image/product3.png' %}" width="200" height="150">
+            </div>
+            <div class="workBx" onclick="window.location.href='fight'">
+                <img src="{% static 'image/product4.png' %}" width="200" height="150">
+            </div>
+            <div class="workBx" onclick="window.location.href='tower'">
+                <img src="{% static 'image/product5.png' %}" width="200" height="150">
+            </div>
+    </section>
+
+    <section class="testimonial" id="testimonial">
+        <div class="heading">
+            <h2>Education</h2>
+        <div class="container">
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2>01</h2>
+                        <h3>Fullerton College</h3>
+                        <p>I spent three and a half years in this college, where I learned many basic courses and broadened my cs knowledge. I also made many friends in this school. They are very interesting people</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2>02</h2>
+                        <h3>Dominguez Hills</h3>
+                        <p>I spent a year in CSU Dominguez Hills. Because of the epidemic, I took all online courses. However, these classes are also very useful to me. They provided a lot of fun for me self-isolating in my dorm</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2>03</h2>
+                        <h3>CSU Fullerton</h3>
+                        <p>My dream school, currently attending. Hope to graduate this year. (Or next year) I am in this school to summarize and improve what I have learned. I hope I can be better in the future</p>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="card">
+                <div class="box">
+                    <div class="content">
+                        <h2>04</h2>
+                        <h3>To Be Continue</h3>
+                        <p>While in the Undergraduate from CSU Fullerton I consider of future plan of my education to graduate</p>
+                     </div>
+                </div>
+            </div> -->
+    </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="heading">
+            <h2>Contact Me</h2>
+            <p>Please provide more valid opinions, I will be grateful</p>
+        </div>
+        <div class="content">
+            <div class="contactInfo">
+                <div class="box">
+                    <h3 style="font-size: 150%;">Contact Info: </h3>
+                    <div class="contactInfoBx">
+                        <div class="text">
+                            <h3>Address</h3>
+                            <p>2613 Ahmerst Ave<br>Fullerton,CA<br>92831</p><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                    
+                    <div class="contactInfoBx">
+                        <div class="text">
+                            <h3>Phone</h3>
+                            <p>714-515-2458</p><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="box">
+                   
+                    <div class="contactInfoBx">
+                        <div class="text">
+                            <h3>Email</h3>
+                            <p>xuzhihuieateat@gmail.com</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="formBx">
+                <form>
+                    <h3>Message Me</h3>
+                    <input type="text" name="" placeholder="Full Name">
+                    <input type="email" name="" placeholder=" Email">
+                    <textarea placeholder="Your Message..."></textarea>
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        window.addEventListener('scroll',function(){
+            var header=document.querySelector('header');
+            header.classList.toggle('sticky',window.scrollY>0);
+        });
+    </script>
+    <!-- <script>
+        function Go_music(){
+            var myWindow=window.open("music_player/music.html","","width=500,height=400");
+        }
+        function Go_snake(){
+            window.open("snake/index.html");
+        }
+        function Go_dist(){
+            window.open("dist/index.html");
+        }
+        function Go_shoot(){
+            window.open("shooting/index.html");
+        }
+    </script> -->
+</body>
+</html>

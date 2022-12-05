@@ -1,0 +1,305 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>weather</title>
+  <!-- Latest compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Import Google Font - Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #43AFFC;
+    }
+    ::selection{
+      color: #fff;
+      background: #43AFFC;
+    }
+    .wrapper{
+      width: 400px;
+      background: #fff;
+      border-radius: 7px;
+      box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+    }
+    .wrapper header{
+      display: flex;
+      font-size: 21px;
+      font-weight: 500;
+      color: #43AFFC;
+      padding: 16px 15px;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+    header i{
+      font-size: 0em;
+      cursor: pointer;
+      margin-right: 8px;
+    }
+    .wrapper.active header i{
+      margin-left: 5px;
+      font-size: 30px;
+    }
+    .wrapper .input-part{
+      margin: 20px 25px 30px;
+    }
+    .wrapper.active .input-part{
+      display: none;
+    }
+    .input-part .info-txt{
+      display: none;
+      font-size: 17px;
+      text-align: center;
+      padding: 12px 10px;
+      border-radius: 7px;
+      margin-bottom: 15px;
+    }
+    .input-part .info-txt.error{
+      color: #721c24;
+      display: block;
+      background: #f8d7da;
+      border: 1px solid #f5c6cb;
+    }
+    .input-part .info-txt.pending{
+      color: #0c5460;
+      display: block;
+      background: #d1ecf1;
+      border: 1px solid #bee5eb;
+    }
+    .input-part :where(input, button){
+      width: 100%;
+      height: 55px;
+      border: none;
+      outline: none;
+      font-size: 18px;
+      border-radius: 7px;
+    }
+    .input-part input{
+      text-align: center;
+      padding: 0 15px;
+      border: 1px solid #ccc;
+    }
+    .input-part input:is(:focus, :valid){
+      border: 2px solid #43AFFC;
+    }
+    .input-part input::placeholder{
+      color: #bfbfbf;
+    }
+    .input-part .separator{
+      height: 1px;
+      width: 100%;
+      margin: 25px 0;
+      background: #ccc;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .separator::before{
+      content: "or";
+      color: #b3b3b3;
+      font-size: 19px;
+      padding: 0 15px;
+      background: #fff;
+    }
+    .input-part button{
+      color: #fff;
+      cursor: pointer;
+      background: #43AFFC;
+      transition: 0.3s ease;
+    }
+    .input-part button:hover{
+      background: #1d9ffc;
+    }
+    /* .weather-part{
+      display: none;
+      margin: 30px 0 0;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    } */
+    .wrapper img{
+      max-width: 85px;
+    }
+    .wrapper .temp{
+      display: flex;
+      font-weight: 500;
+      font-size: 55px;
+    }
+    .wrapper .temp .numb{
+      font-weight: 500;
+    }
+    .wrapper .temp .deg{
+      font-size: 40px;
+      display: block;
+      margin: 10px 5px 0 0;
+    }
+    .wrapper .weather{
+      font-size: 21px;
+      text-align: center;
+      margin: -5px 20px 15px;
+    }
+    .wrapper .location{
+      display: flex;
+      font-size: 19px;
+      padding: 0 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      align-items: flex-start;
+    }
+    .location i{
+      font-size: 22px;
+      margin: 4px 5px 0 0;
+    }
+    .wrapper .bottom-details{
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      border-top: 1px solid #ccc;
+    }
+    .bottom-details .column{
+      display: flex;
+      width: 100%;
+      padding: 15px 0;
+      align-items: center;
+      justify-content: center;
+    }
+    .column i{
+      color: #5DBBFF;
+      font-size: 40px;
+    }
+    .column.humidity{
+      border-left: 1px solid #ccc;
+    }
+    .column .details{
+      margin-left: 3px;
+    }
+    .details .temp, .humidity span{
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: -3px;
+    }
+    .details .temp .deg{
+      margin: 0;
+      font-size: 17px;
+      padding: 0 2px 0 1px;
+    }
+    .column .details p{
+      font-size: 14px;
+      margin-top: -6px;
+    }
+    .humidity i{
+      font-size: 37px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header><i class='bx bx-left-arrow-alt'></i>Weather App</header>
+    <section class="input-part">
+      <p class="info-txt"></p>
+      <div class="content">
+        <form action="" method="post" class="col-md-6 col-md-offset-3">
+        {% csrf_token %}
+        <input type="text" spellcheck="false" placeholder="Enter city name" required name="city">
+        <button type="submit" class="btn btn-primary" onclick="swap_icon()">Search</button>
+      </div></form>
+      <div class="separator"></div>
+        <button onclick="window.location.href='L'">Menu</button>
+    </section>
+    {% if data.country_code %}
+    <section class="wrapper">
+      <img src="{% static 'image/clear.svg' %}" alt="Weather Icon">
+      <div class="temp">
+        <span class="numb">{{data.temp}}</span>
+        <!-- <span class="deg">°</span>C -->
+      </div>
+      <div class="weather">{{data.weather}}</div>
+      <div class="location">
+        <i class='bx bx-map'></i>
+        <span>{{city}},      {{data.country_code}}</span>
+      </div>
+      <div class="bottom-details">
+        <div class="column feels">
+          <i class='bx bxs-thermometer'></i>
+          <div class="details">
+            <div class="temp">
+              <span class="numb-2">{{data.feels_like}}</span>
+              <!-- <span class="deg">°</span>C -->
+            </div>
+            <p>Feels like</p>
+          </div>
+        </div>
+        <div class="column humidity">
+          <i class='bx bxs-droplet-half'></i>
+          <div class="details">
+            <span>{{data.humidity}} %</span>
+            <p>Humidity</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <input type="hidden" id="id" value="{{data.id}}"/>
+    <h5 style="display:none">{{data.cod}}</h5>
+    {% endif %}
+
+  <!-- <section class="testimonial" id="testimonial">
+    <div class="container">
+        <div class="card">
+            <div class="box">
+                <div class="content">
+                  {% if data.country_code %}
+                  <div class="col-md-6 col-md-offset-3">
+                    <h2>{{data.country_code}}</h2>
+                    <h3>{{city}}</h3>
+                    <h5>coordinate:{{data.coordinate}}</h5>
+                    <h5>temp: {{data.temp}}</h5>
+                    <h5>pressure: {{data.pressure}}</h5>
+                    <h5>humidity: {{data.humidity}}</h5>
+                    <h5>weather: {{data.weather}}</h5>
+                  </div>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+
+      </section> -->
+</body>
+<script>
+  const wIcon = weatherPart.querySelector("img");
+  var id = document.getElementById('id').value;
+  function swap_icon(){
+    if(id == 800){
+            wIcon.src = "{% static 'image/clear.svg' %}";
+        }else if(id >= 200 && id <= 232){
+            wIcon.src = "{% static 'image/storm.svg' %}"; 
+        }else if(id >= 600 && id <= 622){
+            wIcon.src = "{% static 'image/snow.svg' %}";
+        }else if(id >= 701 && id <= 781){
+            wIcon.src = "{% static 'image/haze.svg' %}";
+        }else if(id >= 801 && id <= 804){
+            wIcon.src = "{% static 'image/cloud.svg' %}";
+        }else if((id >= 500 && id <= 531) || (id >= 300 && id <= 321)){
+            wIcon.src = "{% static 'image/rain.svg' %}";
+        }
+  }
+</script>
+</html>

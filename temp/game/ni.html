@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Stick Hero</title>
+  <link rel="stylesheet" href="{% static 'game/ni_style.css' %}">
+
+</head>
+<body><p style="text-align:center ;background-color: rgb(221, 255, 127); color:black"onclick="window.location.href='game'">Go back to game Menu</p>
+<div class="container">
+  <div id="score"></div>
+  <canvas id="game" width="375" height="100"></canvas>
+  <div id="introduction">Hold down the mouse to stretch out a stick</div>
+  <div id="perfect">DOUBLE SCORE</div>
+  <button id="restart">RESTART</button>
+</div>
+
+
+  <script  src="{% static 'game/ni_script.js' %}"></script>
+
+</body>
+</html>

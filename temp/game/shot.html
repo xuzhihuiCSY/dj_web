@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>shoot</title>
+		<link rel="stylesheet" href="{% static 'game/Sstyles.scss' %}">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				-webkit-box-sizing: border-box;
+				box-sizing: border-box;
+				}
+			html, body {
+				height: 100%;
+				}
+			body {
+				min-height: 100%;
+				max-width: 100%;
+				background: #111;
+				font-family: Lato, sans-serif;
+				}
+				
+			.container {
+				min-height: 100%;
+				max-width: 960px;
+				margin: 0 auto;
+				}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="game-wrap">
+				<canvas width="960px" height="540" id="game"></canvas>
+				<article class="content" style="color: #ccc;
+				text-align: center;
+				padding: 0 20px;">
+					<h1 class="title">Shooting game</h1>
+					<p>Left&right arrow to move and space to shoot</p>
+					<p>live and kill more enemies</p>
+					<p style="text-align:center ;background-color: rgb(221, 255, 127); color:black"onclick="window.location.href='game'">Go back to game Menu</p>
+				</article>
+			</div>
+		</div>
+		<script src="{% static 'game/Sscript.js' %}"></script>
+	</body>
+</html>
